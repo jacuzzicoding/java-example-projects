@@ -12,6 +12,10 @@ public class SinglyLinkedList<E> { //define the SinglyLinkedList class
         public E getElement() { return element; }
         public Node<E> getNext() { return next; }
         public void setNext(Node<E> n) { next = n; }
+        // Create an empty node
+    public Node() {
+            this(null, null);
+}
     }
 
     // Head of the list
@@ -22,16 +26,14 @@ public class SinglyLinkedList<E> { //define the SinglyLinkedList class
     private int size;
 
     // Constructor
-    public SinglyLinkedList() {
+    public SinglyLinkedList() { //setting head and tail to null and size to 0 becasue the list is currently empty
         head = null;
         tail = null;
         size = 0;
     }
 
-    // Other methods (to be implemented)
-    // e.g., add, delete, etc.
     // this is the method to add an element to the beginning of the list
-    public void addFirst(E e) {
+    public void addFirst(E e) { 
         head = new Node<>(e, head);
         if (size == 0)  //check if the list is empty
             tail = head; //if the list is empty then we need to make the tail point to the head 
@@ -105,9 +107,9 @@ public class SinglyLinkedList<E> { //define the SinglyLinkedList class
     }
 
     // Method to delete any node in the linked list
-    public E remove(E e) {
-        if (isEmpty()) return null;
-        if (head.getElement().equals(e)) return removeFirst();
+    public E remove(E e) { //we will remove the node with the element "e"
+        if (isEmpty()) return null; 
+        if (head.getElement().equals(e)) return removeFirst(); //if the element is in the head, we will remove the head
 
         Node<E> prev = head;
         Node<E> current = head.getNext();
@@ -117,31 +119,67 @@ public class SinglyLinkedList<E> { //define the SinglyLinkedList class
         }
 
         if (current != null) {
-            prev.setNext(current.getNext());
-            size--;
-            if (current == tail)
-                tail = prev;
+            prev.setNext(current.getNext()); //if the element is found, we will update the next pointer of the previous node to the next node of the current node. hope i wrote that out right
+            size--; //decrement the size of the list
+            if (current == tail) //if the current node is the tail, we will update the tail pointer to the previous node so it is the new tail
+                tail = prev; 
             return current.getElement();
         }
-        return null;
+        return null; //if the element is not found, we will return null
     }
 
-    //main method for testing
-    public static void main(String[] args) {
-        SinglyLinkedList<String> s = new SinglyLinkedList<>();
-        s.addFirst("World");
-        s.addFirst("Hello");
-        s.addLast("!");
-        System.out.println("List after adding elements:");
-        s.printList();
-        System.out.println("First element: " + s.getFirst());
-        System.out.println("Last element: " + s.getLast());
-        System.out.println("Size of the list: " + s.size());
-        System.out.println("Removed first element: " + s.removeFirst());
-        System.out.println("List after removing first element:");
-        s.printList();
-        s.remove("World");
-        System.out.println("List after removing 'World':");
-        s.printList();
+    //method to create an empty node
+    public Node<E> createEmptyNode() {
+    return new Node<>();
     }
+    //  method to create a node with a given value
+    public Node<E> createNodeE(E value) {
+        return new Node<>(value, null);
+    }
+
+//----------------TESTING-------------------------//
+
+ public static void main(String[] args) {
+    SinglyLinkedList<String> s = new SinglyLinkedList<>(); //using strings for this test, showing .addFirst, .addLast, .printList, and .remove.
+    s.addFirst("code");
+    s.addFirst("my");
+    s.addFirst("Testing");
+    s.addLast("!");
+    System.out.println("List after adding elements:");
+    s.printList();
+    System.out.println("First element: " + s.getFirst());
+    System.out.println("Last element: " + s.getLast());
+    System.out.println("Size of the list: " + s.size());
+    System.out.println("Removed first element: " + s.removeFirst());
+    System.out.println("List after removing first element:");
+    s.printList();
+    s.remove("my");
+    System.out.println("List after removing 'my':");
+    s.printList();
+
+
+    System.out.println("\n--- More Test Cases ---");
+
+    SinglyLinkedList<Integer> list = new SinglyLinkedList<>(); //using int this time
+    // Test isEmpty on a new list
+    System.out.println("Is new list empty? " + list.isEmpty()); //showcasing the isEmpty method. should return true
+    list.addFirst(3); //showcasing the addFirst method
+    list.addFirst(2);
+    list.addFirst(1);
+    list.addLast(4); //showcasing the addLast method
+    list.addLast(5);
+    System.out.println("List after adding elements:");
+    list.printList(); //showcasing the printList method
+    System.out.println("Adding 0 after the second element to show .addAfter:");
+    list.addAfter(0, list.head.getNext()); //showcasing the addAfter method
+    list.printList(); 
+
+    // Test creating an empty node
+    Node<Integer> emptyNode = list.createEmptyNode(); //showcasing the createEmptyNode method
+    System.out.println("Empty node created: " + (emptyNode != null)); 
+ 
+    // Test creating a node with a value
+    Node<Integer> valueNode = list.createNodeE(42); //showcasing the createNodeE method
+    System.out.println("Node with value created: " + (valueNode != null && valueNode.getElement() == 42));
+}
 }
