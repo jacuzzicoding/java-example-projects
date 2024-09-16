@@ -88,20 +88,20 @@ public class SinglyLinkedList<E> { //define the SinglyLinkedList class
             System.out.print(current.getElement() + " "); //print the element of the current node
             current = current.getNext(); //move to the next node
         }
-        System.out.println();
+        System.out.println(); 
     }
 
     // Method to add a new node to a specified location (after a given node)
-    public void addAfter(E e, Node<E> node) {
-        if (node == null) {
+    public void addAfter(E e, Node<E> node) { //so once we find the node we want to add after, we can add the new node using this method
+        if (node == null) { //if the node is null, we will add the new node to the beginning of the list
             addFirst(e);
             return;
         }
-        Node<E> newest = new Node<>(e, node.getNext());
-        node.setNext(newest);
-        if (tail == node)
+        Node<E> newest = new Node<>(e, node.getNext()); //create a new node with our content and point it to the next node of the given node
+        node.setNext(newest); //update the next node pointer
+        if (tail == node) //if the given node is the tail, we will update the tail pointer
             tail = newest;
-        size++;
+        size++; //incrememt size
     }
 
     // Method to delete any node in the linked list
