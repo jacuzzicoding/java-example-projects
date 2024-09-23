@@ -20,7 +20,7 @@ public class GameEntry {
         return "(" + name + ", " + score + ")";
     }
 
-    /* Implementing the HighScoreStack class here */ 
+    /* Implementing the HighScoreStack class here to make it a stack */ 
 public class HighScoreStack {
         private GameEntry[] stack;
         private int top;
