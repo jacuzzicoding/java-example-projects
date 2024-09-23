@@ -28,18 +28,30 @@ public class GameEntry {
     public class HighScoreStack {
         private GameEntry[] stack;
         private int top;
-        private static final int CAPACITY = 10;  // Or any default size you prefer
+        private static final int CAPACITY = 10;  // just using 10 for simplicity
     
         public HighScoreStack() {
-            // Initialize the stack here
+            stack = new GameEntry [CAPACITY];   // Initializing the stack 
+            top = -1;       //we will create an empty stack                                   
         }
     
         public void push(GameEntry entry) {
-            // Implement push operation
+            if (top == stack.length - 1) { //exception for if the stack is full
+                System.out.println(" The stack is full. You cannot add more elements. Use pop() to remove an element.");
+                return;
+            }
+            top++; //increment the top pointer
+            stack[top] = entry; // this will add the element to the top of the stack
         }
     
         public GameEntry pop() {
-            // Implement pop operation
+           if (isEmpty()) {   //exception for if the stack is empty
+               System.out.println("The stack is empty. There are no elements to pop.");
+               return null;  }
+            GameEntry entry = stack[top]; //this will remove the top element
+            stack[top] = null; //this will remove the element from the stack
+            top--; //decrement the top pointer
+            return entry; //return the element that was removed
         }
     
         public GameEntry top() {
