@@ -54,16 +54,21 @@ public class GameEntry {
             return entry; //return the element that was removed
         }
     
-        public GameEntry top() {
-            // Implement top operation
+        public GameEntry top() { //this will return but not remove the top element
+            if (isEmpty()) { //exception for if the stack is empty
+                System.out.println("The stack is empty. There are no elements to return.");
+                return null; }
+            return stack[top]; //return the top element
         }
     
-        public int size() {
-            // Implement size operation
-        }
-    
-        public boolean isEmpty() {
-            // Implement isEmpty operation
+        public int size() { //this will return the size of the stack
+            if (isEmpty()) { //exception for if the stack is empty
+                System.out.println("No elements. The size is 0" );
+                return 0; }
+            else {
+            return top + 1; //return the size of the stack
+            }
+        public boolean isEmpty() { //this will check if the stack is empty
+            return top == -1; //return true if the stack is empty
         }
     }
-}
