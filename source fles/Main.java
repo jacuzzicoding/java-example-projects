@@ -11,24 +11,50 @@ public class Main {
         HighScoreStack highScores = new HighScoreStack();
 
         try {
-            // Add some GameEntry objects to the stack
+            System.out.println("Testing push and top:");
+            /* Add some GameEntry objects to the stack */
             highScores.push(new GameEntry("Alice", 100));
             highScores.push(new GameEntry("Bob", 150));
             highScores.push(new GameEntry("Charlie", 120));
 
-            // Display the top element
-            System.out.println("Top entry: " + highScores.top());
+            System.out.println("Top entry: " + highScores.top());     // Display the top element
 
-            // Pop an element from the stack
-            System.out.println("Popped entry: " + highScores.pop());
+            System.out.println("\nTesting pop:");
+            System.out.println("Popped entry: " + highScores.pop());   // Pop an element from the stack
 
-            // Display the size of the stack
-            System.out.println("Current stack size: " + highScores.size());
+            System.out.println("\nTesting size:");
+            System.out.println("Current stack size: " + highScores.size());    // Display the size of the stack
 
-            // Check if the stack is empty
-            System.out.println("Is stack empty? " + highScores.isEmpty());
+            System.out.println("\nTesting push after pop:");
+            highScores.push(new GameEntry("David", 200)); // Push another element to the stack for testing
+
+            System.out.println("New top entry: " + highScores.top());     // Display the new top element
+
+            System.out.println("Updated stack size: " + highScores.size());    // Display the size of the stack
+
+            System.out.println("\nTesting isEmpty:");
+            System.out.println("Is stack empty? " + highScores.isEmpty());  // Check if the stack is empty
+
+            System.out.println("\nTesting push to full stack:");
+            // Fill the stack
+            for (int i = 0; i < 7; i++) {
+                highScores.push(new GameEntry("Player" + i, i * 10));
+            }
+            // This should cause a StackOverflowError
+            highScores.push(new GameEntry("OverflowPlayer", 1000));
+
+        } catch (StackOverflowError e) {
+            System.out.println("StackOverflowError caught as expected: " + e.getMessage());
         } catch (Exception e) {
             System.out.println("An error occurred: " + e.getMessage());
+        }
+
+        System.out.println("\nTesting pop from empty stack:");
+        HighScoreStack emptyStack = new HighScoreStack();
+        try {
+            emptyStack.pop();
+        } catch (EmptyStackException e) {
+            System.out.println("EmptyStackException caught as expected.");
         }
     }
 }
