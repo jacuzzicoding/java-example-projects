@@ -1,6 +1,6 @@
 import java.util.EmptyStackException;
 
-// This is an implementation of a stack using a singly linked list in Java
+// This is an implementation of a stack, based on the code I did for the singly linked list in Java last week.
 public class LinkedListStack<E> {
     private SinglyLinkedList<E> list; // The underlying linked list to store stack elements
 
