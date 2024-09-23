@@ -5,7 +5,7 @@ import java.util.EmptyStackException;
 //i will make my own highscore stack class
 
 /*here will be the main entry point  */
-public class Main {
+public class ArrayStack {
     public static void main(String[] args) {
         // Create a HighScoreStack instance
         HighScoreStack highScores = new HighScoreStack();
