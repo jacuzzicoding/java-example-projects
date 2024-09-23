@@ -3,7 +3,7 @@
 //i will make my own highscore stack class
 
 
-public class GameEntry {
+ class GameEntry {
     private String name;            //name of the person earning the score   
     private int score;              //score value
     
@@ -23,7 +23,7 @@ public class GameEntry {
     public String toString() {
         return "(" + name + ", " + score + ")";
     }
-
+}
     /* Implementing the HighScoreStack class here to make it a stack */ 
 public class HighScoreStack {
     private GameEntry[] stack;
@@ -62,5 +62,31 @@ public class HighScoreStack {
         }
     public boolean isEmpty() { //this will check if the stack is empty
         return top == -1; //return true if the stack is empty
+    }
+}
+
+/*here will be the main entry point  */
+
+public class Main {
+    public static void main(String[] args) {
+        // Create a HighScoreStack instance
+        HighScoreStack highScores = new HighScoreStack();
+
+        // Add some GameEntry objects to the stack
+        highScores.push(new GameEntry("Alice", 100));
+        highScores.push(new GameEntry("Bob", 150));
+        highScores.push(new GameEntry("Charlie", 120));
+
+        // Display the top element
+        System.out.println("Top entry: " + highScores.top());
+
+        // Pop an element from the stack
+        System.out.println("Popped entry: " + highScores.pop());
+
+        // Display the size of the stack
+        System.out.println("Current stack size: " + highScores.size());
+
+        // Check if the stack is empty
+        System.out.println("Is stack empty? " + highScores.isEmpty());
     }
 }
