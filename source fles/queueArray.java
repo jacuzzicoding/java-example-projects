@@ -12,7 +12,13 @@ public class queueArray { //constructor i will use to make the queue
     //structure  x
 
     public void enqueue(int element) { //need to update this to be enqueue
-        queue.addFirst(); // Add the element to the front of the queue
+        //check if size == capacity 
+        if (size == capacity) {
+            throw new IllegalStateException("Queue is currently full"); //if not, return an exception
+        }
+        rear = (rear + 1) % capacity; //we need to set the rear to where our new element will go
+        queue[rear] = element; //add the element at the rear
+        size++; //increase the size to allow the element to be added
     }
 
     //dequeue method will go here
