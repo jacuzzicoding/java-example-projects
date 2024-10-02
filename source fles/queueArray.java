@@ -17,7 +17,7 @@ public class queueArray { //constructor i will use to make the queue
 
     //dequeue method will go here
 
-    public E first() {
+    public int first() { //this will give me the first element
         if (isEmpty()) {
             throw new EmptyQueueException(); // Throw an exception if the stack is empty
         }
