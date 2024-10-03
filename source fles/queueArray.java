@@ -13,15 +13,25 @@ public class queueArray { //constructor i will use to make the queue
 
     public void enqueue(int element) { //need to update this to be enqueue
         //check if size == capacity 
-        if (size == capacity) {
-            throw new IllegalStateException("Queue is currently full"); //if not, return an exception
+        if isFull() {
+            throw new IllegalStateException("Queue is currently full"); //if so, return an exception
         }
         rear = (rear + 1) % capacity; //we need to set the rear to where our new element will go
         queue[rear] = element; //add the element at the rear
         size++; //increase the size to allow the element to be added
     }
 
-    //dequeue method will go here
+    public int dequeue() { //need to update this to be dequeue
+        //check if size == empty 
+        if (isEmpty()){
+            throw new IllegalStateException("Queue is currently empty! No item to remove"); //if it is, return an exception
+        }
+        int dequeuedElement = queue[front]; //store the front element as the element we will remove
+        front = (front + 1) % capacity; //move the front pointer and wrap around 
+        size--; //decrease the size now that our element is gone
+        return dequeuedElement; //return the removed element
+    }
+
 
     public int first() { //this will give me the first element
         if (isEmpty()) {
@@ -34,7 +44,11 @@ public class queueArray { //constructor i will use to make the queue
         return size == 0; //return true if the queue is empty
     }
 
-    //isfull method will go here
+    public boolean isFull() {
+        return (size == capacity);
+    }
 
-    //size method will go here
+    public int size() {
+        return size;
+    }
 }
