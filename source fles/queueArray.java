@@ -9,7 +9,6 @@ public class queueArray { //constructor i will use to make the queue
     int size; //this will track how many elements we have
     int capacity; //this will store the maximum size of the array
 
-    //structure  x
 
     public void enqueue(int element) { //need to update this to be enqueue
         //check if size == capacity 
