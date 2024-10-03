@@ -9,6 +9,14 @@ public class queueArray { //constructor i will use to make the queue
     int size; //this will track how many elements we have
     int capacity; //this will store the maximum size of the array
 
+     // Constructor
+     public queueArray(int capacity) {
+        this.capacity = capacity;
+        this.queue = new int[capacity];
+        this.front = 0;
+        this.rear = -1;
+        this.size = 0;
+    }
 
     public void enqueue(int element) { //need to update this to be enqueue
         //check if size == capacity 
@@ -53,40 +61,42 @@ public class queueArray { //constructor i will use to make the queue
     // Test cases
     public static void main(String[] args) {
         queueArray queue = new queueArray(5);
-
+    
         // Test 1: isEmpty on a new queue
         System.out.println("Test 1: " + (queue.isEmpty() ? "Passed" : "Failed"));
-
+    
         // Test 2: Enqueue elements
         queue.enqueue(1);
         queue.enqueue(2);
         queue.enqueue(3);
         System.out.println("Test 2: " + (queue.size() == 3 ? "Passed" : "Failed"));
-
+    
         // Test 3: First element
         System.out.println("Test 3: " + (queue.first() == 1 ? "Passed" : "Failed"));
-
+    
         // Test 4: Dequeue
         int dequeued = queue.dequeue();
         System.out.println("Test 4: " + (dequeued == 1 && queue.size() == 2 ? "Passed" : "Failed"));
-
+    
         // Test 5: Enqueue to full capacity
         queue.enqueue(4);
         queue.enqueue(5);
+        queue.enqueue(6); // Enqueue the fifth element
         try {
-            queue.enqueue(6); // This should throw an exception
+            queue.enqueue(7); // This should throw an exception
             System.out.println("Test 5: Failed");
         } catch (IllegalStateException e) {
             System.out.println("Test 5: Passed");
         }
-
+    
         // Test 6: Dequeue until empty
         queue.dequeue();
         queue.dequeue();
         queue.dequeue();
         queue.dequeue();
+        queue.dequeue();
         System.out.println("Test 6: " + (queue.isEmpty() ? "Passed" : "Failed"));
-
+    
         // Test 7: Dequeue from empty queue
         try {
             queue.dequeue(); // This should throw an exception
@@ -94,7 +104,7 @@ public class queueArray { //constructor i will use to make the queue
         } catch (IllegalStateException e) {
             System.out.println("Test 7: Passed");
         }
-
+    
         // Test 8: First on empty queue
         try {
             queue.first(); // This should throw an exception
@@ -102,5 +112,5 @@ public class queueArray { //constructor i will use to make the queue
         } catch (NoSuchElementException e) {
             System.out.println("Test 8: Passed");
         }
-    }
+    }    
 }
