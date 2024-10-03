@@ -12,7 +12,7 @@ public class queueArray { //constructor i will use to make the queue
 
     public void enqueue(int element) { //need to update this to be enqueue
         //check if size == capacity 
-        if isFull() {
+        if (isFull()) {
             throw new IllegalStateException("Queue is currently full"); //if so, return an exception
         }
         rear = (rear + 1) % capacity; //we need to set the rear to where our new element will go
