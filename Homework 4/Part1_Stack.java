@@ -43,6 +43,6 @@ public class Part1_Stack { //new class for the
 
         // Test multiple peek() calls (peek should not remove elements)
         System.out.println("Peek 1: " + stack.peek()); // should be 40
-        System.out.println("Peek 2: " + stack.peek()); // still 40, not removed
+        System.out.println("Peek 2: " + stack.peek()); // still 40, not removed, unlike pop
     }
  }
