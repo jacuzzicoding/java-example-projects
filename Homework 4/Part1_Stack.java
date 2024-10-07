@@ -1,5 +1,6 @@
 // Part1_Stack.java
 
+import java.util.EmptyStackException; //importing the EmptyStackException class from the Java util package
 import java.util.Stack; //I will use the built in Java collections framework for this assignment
 
 public class Part1_Stack { //new class for the
@@ -31,9 +32,17 @@ public class Part1_Stack { //new class for the
         // Edge case: Trying to pop from an empty stack (will throw EmptyStackException)
         try {
             stack.pop(); // This should cause an exception
-        } catch (Exception e) {
+        } catch (EmptyStackException e) {
             System.out.println("Exception caught: " + e); // Expected behavior.
         }
-        // Add more test cases as needed...
+        // Additional test cases:
+        // Test pushing duplicate values
+        stack.push(40);
+        stack.push(40);
+        System.out.println("Stack after pushing duplicate values: " + stack); // [40, 40]
+
+        // Test multiple peek() calls (peek should not remove elements)
+        System.out.println("Peek 1: " + stack.peek()); // should be 40
+        System.out.println("Peek 2: " + stack.peek()); // still 40, not removed
     }
-}
+ }
