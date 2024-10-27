@@ -14,7 +14,7 @@ public class HashMapImplementation {
     public static void main(String[] args) {
         HashMapImplementation counter = new HashMapImplementation();
         // Example usage with a longer test case
-        String text = "this is a test this is only a test but this is also a longer test to show how the hashmap handles more words";
+        String text = "this is a test this is only a test but this is also a longer test to show how the hashmap handles more words. test test test haha";
         counter.processText(text);
         counter.displayCounts();
         
